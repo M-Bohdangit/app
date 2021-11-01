@@ -12,16 +12,13 @@ class Index extends \Magento\Framework\View\Element\Template
 
     parent::__construct($context, $data);
   }
-  public function getText()
-  {
-    return "Hello World";
-  }
+
   /**
    * hello
    * @return string 
    */
-  public function getHello()
+  public function getText()
   {
-    return "hello";
+    return ("hello world");
   }
 }
