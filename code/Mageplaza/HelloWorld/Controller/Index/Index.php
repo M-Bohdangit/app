@@ -2,6 +2,9 @@
 
 namespace Mageplaza\HelloWorld\Controller\Index;
 
+use \Magento\Framework\App\ActionInterface;
+use Magento\Framework\Controller\ResultFactory;
+
 class Index extends \Magento\Framework\App\Action\Action
 {
   // protected $pageFactory;
@@ -20,8 +23,13 @@ class Index extends \Magento\Framework\App\Action\Action
   //   return $page;
   // }
 
+  // public function execute()
+  // {
+  //   die("Hello World");
+  // }
   public function execute()
   {
-    die("Hello World");
+    $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+    return $resultPage;
   }
 }
