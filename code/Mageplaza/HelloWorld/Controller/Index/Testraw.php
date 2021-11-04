@@ -14,7 +14,7 @@ use Magento\Framework\Controller\Result\RawFactory;
 class Testraw implements ActionInterface
 {
   /***
-@var RawFactory
+  @var RawFactory
    */
   protected $resultFactory;
   /**
@@ -26,17 +26,17 @@ class Testraw implements ActionInterface
   {
     $this->resultFactory = $resultFactory;
   }
-  // public function execute()
-  // {
-  //   $page = $this->resultFactory->create()
-  //     ->setContents("<i>Perspective Studio</i>");
-  //   return $page;
-  // }
+  //public function execute()
+  //{
+  //$page = $this->resultFactory->create()
+  //->setContents("<i>Perspective Studio</i>");
+  //return $page;
+  //}
   public function execute()
   {
     $page = $this->resultFactory->create()
       ->setHeader('Content-Type', 'text/xml')
-      ->setContents('<root><name>Perspective Studio</name><job>Magento
-Developer</job></root>');
+      ->setContents("<root><name>Perspective Studio</name><job>Magento Developer</job></root>");
+    return $page;
   }
 }
