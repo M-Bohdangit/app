@@ -1,0 +1,28 @@
+<?php
+
+/** @var \Perspective\ProductByID\Block\Index $block */
+/** @var \Perspective\ProductByID\Helper\ProductById $helper */
+// $helper = $block->helper(\Perspective\ProductByID\Helper\ProductById::class);
+
+
+
+?>
+<?php $product = $block->getProductById(); ?>
+<h4>Entity product by ID with Helper</h4>
+<?php if (is_string($product)) : ?>
+    <h3>Такого продукта нема!</h3>
+<?php else : ?>
+    <?php echo __('Name: '); ?><?php echo $product->getName(); ?>
+    <br>
+    <?php echo __('Sku: '); ?><?php echo $product->getSku(); ?>
+<?php endif; ?>
+
+<?php $product = $block->getProductBySku(); ?>
+<h4>Entity product by Sku with Helper</h4>
+<?php if (is_string($product)) : ?>
+    <h3>Такого продукта нема!</h3>
+<?php else : ?>
+    <?php echo __('Name: '); ?> <?php echo $product->getName(); ?>
+    <?php echo __('ID: '); ?><?php echo $product->getId(); ?>
+    <br>
+<?php endif; ?> <br> <br> <br>
