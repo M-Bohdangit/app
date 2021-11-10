@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
   <router id="standard">
-    <route id="current_prodCat" frontName="current-prodcat">
+    <route id="current_prod_cat" frontName="current-prodcat">
       <module name="Perspective_CurrentProdCat" />
     </route>
   </router>

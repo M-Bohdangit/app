@@ -1,29 +1,20 @@
 <?php
+
 /** @var $block \Magento\Framework\View\Element\Template */
-/** @var \Perspective\ProductByID\Helper\ProductById $helper */
-/** @var \Perspective\ProductByID\Helper\ProductById $block */
-//$helper = $this->helper(\Perspective\ProductByID\Helper\ProductById::class);
-//$product = $helper->getProductById();
-//$productSku = $helper->getProductBySku();
-?>
-<?php $product = $block->getProductById('1'); ?>
-<?php if (!is_null($product)) : ?>
-    <h2><?= $product->getName(); ?></h2>
-    <h2><?= $product->getSku(); ?></h2>
-    <?php endif; ?>
 
-    <?php $product = $block->getProductBySku('24-MB01'); ?>
-<?php if (!is_null($product)) : ?>
-    <h2><?= $product->getName(); ?></h2>
-    <h2><?= $product->getSku(); ?></h2>
-    <?php endif; ?>
-
-    <?php $product = $block->getHello(); ?>
-    <?php if (!is_null($product)) : ?>
-    <h2><?= $product; ?></h2>
-      <?php endif; ?>
-
-    
+// $block = \Magento\Framework\App\ObjectManager::getInstance()->get('Perspective\CurrentProdCat\Block\Index');
 
 
-
+// print current product data
+if ($currentProduct = $block->getCurrentProduct()) {
+    echo $currentProduct->getName() . '<br />';
+    echo $currentProduct->getSku() . '<br />';
+    echo $currentProduct->getFinalPrice() . '<br />';
+    echo $currentProduct->getProductUrl() . '<br />';
+    print_r($currentProduct->getCategoryIds()) . '<br />';
+}
+// print current category data
+if ($currentCategory = $block->getCurrentCategory()) {
+    echo $currentCategory->getName() . '<br />';
+    echo $currentCategory->getUrl() . '<br />';
+}

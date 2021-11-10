@@ -1,31 +1,42 @@
 <?php
+
 namespace Perspective\CurrentProdCat\Block;
+
+use Magento\Catalog\Api\Data\ProductInterface;
+
 class Index extends \Magento\Framework\View\Element\Template
 {
-	protected $_productRepository;
-		
+	protected $_registry;
+
 	public function __construct(
-		\Magento\Backend\Block\Template\Context $context,		
-		\Magento\Catalog\Model\ProductRepository $productRepository,
+		\Magento\Backend\Block\Template\Context $context,
+		\Magento\Framework\Registry $registry,
 		array $data = []
-	)
-	{
-		$this->_productRepository = $productRepository;
+	) {
+		$this->registry = $registry;
 		parent::__construct($context, $data);
 	}
-	
-	public function getProductById($id)
-	{
-		return $this->_productRepository->getById($id);
-	}
-	
-	public function getProductBySku($sku)
-	{
-		return $this->_productRepository->get($sku);
-	}
-	public function getHello()
-	{
-		return "hello";
-	}
 
+	public function prepareLayout()
+	{
+		return parent::prepareLayout();
+	}
+	/**
+	 * Get current category
+	 * 
+	 *  @return mixed */
+
+	public function getCurrentCategory()
+	{
+		return $this->registry->registry('current_category');
+	}
+	/**
+	 * Get current product
+	 * 
+	 *  @return mixed */
+
+	public function getCurrentProduct()
+	{
+		return $this->registry->registry('current_product');
+	}
 }
