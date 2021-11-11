@@ -357,6 +357,7 @@ return [
         'Mageplaza_HelloWorld' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
+        'Perspective_CatSpecProd' => 1,
         'Perspective_CurrentProdCat' => 1,
         'Perspective_ProductByID' => 1,
         'Perspective_TutorialEntity' => 1,
