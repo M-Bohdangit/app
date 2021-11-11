@@ -4,12 +4,12 @@
     <title>CurrentProdCat</title>
   </head>
   <body>
-    <referenceContainer name="content">
+    <referenceContainer name="product.info.main">
       <block
-
+               
                 class="Perspective\CurrentProdCat\Block\Index"
-                template="Perspective_CurrentProdCat::current_prod_cat.phtml"
-            />
+                template="Perspective_CurrentProdCat::current_prod_cat.phtml" after="product.info.price" before="product.price.tier">
+       </block>
     </referenceContainer>
   </body>
 </page>
