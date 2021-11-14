@@ -1,0 +1,24 @@
+<?php
+
+namespace Perspective\ProductCollection\Block;
+
+class Index extends \Magento\Framework\View\Element\Template
+{
+	protected $_productCollectionFactory;
+
+	public function __construct(
+		\Magento\Backend\Block\Template\Context $context,
+		\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+		array $data = []
+	) {
+		$this->_productCollectionFactory = $productCollectionFactory;
+		parent::__construct($context, $data);
+	}
+
+	public function getProductCollection()
+	{
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$productCollectionFactory = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
+		return $this->_collection = $productCollectionFactory->create();
+	}
+}

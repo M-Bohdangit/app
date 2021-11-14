@@ -1,0 +1,14 @@
+<?php
+$categoryId = 4;
+$getProudctcollection = $block->getCategoryProduct($categoryId); ?>
+
+<ul class="category-products">
+    <?php
+    foreach ($getProudctcollection as $product) : ?>
+        <li class="level0-child">
+            <a href="<?php echo $product->getProductUrl(); ?>">
+                <?php echo $product->getName(); ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

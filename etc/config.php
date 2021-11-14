@@ -361,6 +361,8 @@ return [
         'Perspective_CurrentProdCat' => 0,
         'Perspective_ListProducts' => 1,
         'Perspective_ProductByID' => 1,
+        'Perspective_ProductCollection' => 1,
+        'Perspective_ProductCollectionCategory' => 1,
         'Perspective_TutorialEntity' => 1,
         'Temando_ShippingRemover' => 1,
         'Vertex_Tax' => 1,
