@@ -8,6 +8,10 @@ $product = $block->getProductById($productId);
 
 $categoryIds = $product->getCategoryIds();
 
+
+// $block->getCategoryCollection() (получаем коллекцию всех категорий) ->addAttributeToFilter('entity_id', $categoryIds); (фильтруем, первый параметр - указывает сортировку по айди категории, второй массив айди категорий из продукта) 
+// В $categories получаем нужные категории. Foreach перебираем и выводим имя категории.
+
 $categories = $block->getCategoryCollection()
     ->addAttributeToFilter('entity_id', $categoryIds);
 
