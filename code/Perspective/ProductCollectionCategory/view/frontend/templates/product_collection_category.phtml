@@ -1,10 +1,10 @@
 <?php
-$categoryId = 4;
-$getProudctcollection = $block->getCategoryProduct($categoryId); ?>
-
+$ids = [4, 5, 6];
+$categoryProducts = $block->getProductCollectionByCategories($ids); ?>
+<?php if (!is_null($categoryProducts))  ?>
 <ul class="category-products">
     <?php
-    foreach ($getProudctcollection as $product) : ?>
+    foreach ($categoryProducts  as $product) : ?>
         <li class="level0-child">
             <a href="<?php echo $product->getProductUrl(); ?>">
                 <?php echo $product->getName(); ?>

@@ -4,19 +4,27 @@ namespace Perspective\ProductCollectionCategory\Block;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
-	protected $categoryFactory;
+
+
+	/**
+	 * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+	 */
+	protected $_productCollectionFactory;
 
 	public function __construct(
-		\Magento\Framework\View\Element\Template\Context $context,
-		\Magento\Catalog\Model\CategoryFactory $categoryFactory
+		\Magento\Backend\Block\Template\Context $context,
+		\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
 	) {
-		$this->categoryFactory = $categoryFactory;
+		$this->_productCollectionFactory = $productCollectionFactory;
 		parent::__construct($context);
 	}
 
-	public function getCategoryProduct($categoryId)
+
+	public function getProductCollectionByCategories($ids)
 	{
-		$category = $this->categoryFactory->create()->load($categoryId)->getProductCollection()->addAttributeToSelect('*');
-		return $category;
+		$collection = $this->_productCollectionFactory->create();
+		$collection->addAttributeToSelect('*');
+		$collection->addCategoriesFilter(['in' => $ids]);
+		return $collection;
 	}
 }
