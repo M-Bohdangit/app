@@ -363,6 +363,7 @@ return [
         'Perspective_ProductByID' => 1,
         'Perspective_ProductCollection' => 1,
         'Perspective_ProductCollectionCategory' => 1,
+        'Perspective_ProductCollectionFilter' => 1,
         'Perspective_TutorialEntity' => 1,
         'Temando_ShippingRemover' => 1,
         'Vertex_Tax' => 1,
