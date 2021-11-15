@@ -1,0 +1,1 @@
+Получить информацию о наличие продукта Qty(), MinQty(), MinSaleQty(), MaxSaleQty(), IsInStock()
