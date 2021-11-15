@@ -1,0 +1,10 @@
+<?php
+
+$id = 15;
+$sku = '24-UG06';
+$_product = $block->getProductById($id);
+$_product = $block->getProductBySku($sku);
+echo '<b>Id: </b>' . $id . '<br/>';
+echo '<b>Width: </b>' . $block->getImageOriginalWidth($_product, 'product_small_image') . '<br />';
+echo '<b>Height: </b>' . $block->getImageOriginalHeight($_product, 'product_small_image') . '<br />';
+echo '<b>Url: </b>' . $block->getProductImageUrl($_product, 'product_small_image') . '<br />';

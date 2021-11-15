@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <title>1.3 Получить коллекцию всех покупателей (Customers)</title>
+  </head>
+  <body>
+    <referenceContainer name="content">
+      <block
+
+                class="Perspective\AllBuyersCollection\Block\Index"
+                template="Perspective_AllBuyersCollection::all_buyers_collection.phtml"
+            />
+    </referenceContainer>
+  </body>
+</page>

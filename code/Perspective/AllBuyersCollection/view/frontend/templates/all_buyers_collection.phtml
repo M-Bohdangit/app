@@ -1,0 +1,10 @@
+<?php
+//Get customer collection
+$customerCollection = $block->getCustomerCollection();
+
+if ($customerCollection && count($customerCollection) > 0) {
+    foreach ($customerCollection as $customer) {
+        echo '<b>Name: </b>' . $customer->getFirstname() . ' ' . $customer->getLastname() . "<br/>";
+        echo '<b>Email: </b>' . $customer->getEmail() . "<br/><hr>";
+    }
+}
