@@ -1,0 +1,7 @@
+<?php $groups = $block->getCustomerGroups();
+// var_dump($groups);
+foreach ($groups as $group) {
+    echo '<b>value -</b> ' . $group['value'] . "<br/>";
+    echo '<b>label - </b>' . $group['label'] . "<br/>";
+    echo "<hr/>";
+}
