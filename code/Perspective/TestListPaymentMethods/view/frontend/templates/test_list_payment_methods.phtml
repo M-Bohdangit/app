@@ -1,0 +1,8 @@
+<?php
+$payments = $block->getAllPaymentMethods();
+// var_dump($payments);
+foreach ($payments as $payment) {
+    if (isset($payment['title'])) {
+        echo '<b>' . $payment['title'] . '</b>' . "<br/>";
+    }
+}

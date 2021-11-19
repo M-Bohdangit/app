@@ -368,6 +368,7 @@ return [
         'Perspective_TestCollectionOrders' => 1,
         'Perspective_TestGroupCustomers' => 1,
         'Perspective_TestImage' => 1,
+        'Perspective_TestListPaymentMethods' => 1,
         'Perspective_TestQty' => 1,
         'Perspective_TutorialEntity' => 1,
         'Temando_ShippingRemover' => 1,
