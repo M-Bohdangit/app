@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+  <router id="standard">
+    <route id="test_list_active_shipping_methods" frontName="test-list-active-shipping-methods">
+      <module name="Perspective_TestListActiveShippingMethods" />
+    </route>
+  </router>
+</config>

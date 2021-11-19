@@ -1,0 +1,7 @@
+<?php $methods = $block->getShippingMethods();
+// var_dump($methods);
+foreach ($methods as $method) {
+    if (isset($method['label'])) {
+        echo '<b>Method shipping - </b>' . $method['label'] . "<br/>";
+    }
+}

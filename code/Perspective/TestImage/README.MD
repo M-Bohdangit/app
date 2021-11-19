@@ -1,1 +1,1 @@
-Получить информацию об изображения продукта (Image) getWidth(), getHeight(), getUrl()
+1.2 Получить информацию об изображения продукта (Image) getWidth(), getHeight(), getUrl()
