@@ -364,6 +364,7 @@ return [
         'Perspective_ProductByID' => 1,
         'Perspective_ProductCollection' => 1,
         'Perspective_ProductCollectionCategory' => 1,
+        'Perspective_ProductCollectionCategoryPrice' => 1,
         'Perspective_ProductCollectionFilter' => 1,
         'Perspective_TestCollectionOrders' => 1,
         'Perspective_TestGroupCustomers' => 1,

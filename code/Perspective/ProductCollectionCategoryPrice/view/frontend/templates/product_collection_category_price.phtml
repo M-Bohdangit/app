@@ -1,0 +1,18 @@
+<?php $ids = [23];
+$categoryProducts = $block->getData('view_model')->getProductCollectionByCategories($ids);
+if (!is_null($categoryProducts))  ?>
+<p><?php foreach ($categoryProducts as $product) {
+        echo '<h3>Name - ' . $product->getName() . '<br />' . 'Price - ' . $product->getPrice() . '<br />' . 'Sku - ' . $product->getSku() . '</h3><br />' . '<br />';
+    } ?></p>
+<h2>Продукты из категории Women - Tops - Jackets, где цена от 50$ до 60$</h2>
+<table border="1px">
+    <th>Name</th>
+    <th>Sku</th>
+    <th>Price</th>
+    <?php if (!is_null($categoryProducts))  ?>
+    <p><?php foreach ($categoryProducts as $product) {
+            if ($product->getPrice() < 60 && $product->getPrice() > 50) {
+                echo '<tr><td><b>' . $product->getName() . '</b></td><td><b>' . $product->getSku() . '</b></td><td><b>' . $product->getPrice() . '</b></td></tr>';
+            }
+        } ?></p>
+</table>
