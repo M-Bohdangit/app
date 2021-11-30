@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright © 2016 Magento. All rights reserved.
+* See COPYING.txt for license details.
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc
+/page_configuration.xsd">
+  <body>
+    <!-- 2.2 Переместить элементы 6-7 под элемент 5 -->
+    <move element="product.info.sku" destination="product.info.type" />
+    <move element="product.info.type" destination="product.info.price" />
+    <!-- 2.3 Переместить весь раздел Size+ Color под элементы 9-10 перед кнопкой Add to Cart -->
+    <!-- <move element="product.info.options.wrapper" destination="product.info.type" before="-"/> -->
+  </body>
+</page>

@@ -373,7 +373,7 @@ return [
         'Perspective_TestListPaymentMethods' => 1,
         'Perspective_TestQty' => 1,
         'Perspective_TutorialEntity' => 1,
-        'Perspective_TutorialProductPage' => 1,
+        'Perspective_TutorialProductPage' => 0,
         'Temando_ShippingRemover' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
