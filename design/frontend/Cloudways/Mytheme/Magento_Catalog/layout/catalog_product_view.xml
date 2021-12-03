@@ -12,6 +12,8 @@
     <move element="product.info.sku" destination="product.info.type" />
     <move element="product.info.type" destination="product.info.price" />
     <!-- 2.3 Переместить весь раздел Size+ Color под элементы 9-10 перед кнопкой Add to Cart -->
-    <!-- <move element="product.info.options.wrapper" destination="product.info.type" before="-"/> -->
+    <move element="product.info.options.wrapper" destination="product.info.addtocart.additional" before="-"/>
+    <!-- 2.4 Переместить “Add to wish” и “Add to compare” непосредственно под элемент 4, а если получится, то и продублировать и под элементом 3, разместив там в столбик. -->
+    <move element="product.info.addto" destination="page.main.title" before="-"/>
   </body>
 </page>
