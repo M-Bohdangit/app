@@ -13,5 +13,9 @@
         <argument name="template" xsi:type="string">Magento_Theme::html/title.phtml</argument>
       </arguments>
     </referenceBlock>
+    <!-- 2.6 Расширить контейнер, в котором содержится блок 4 и дописать в него еще один блок с текстом “Buy me!”. Новый блок расположить непосредственно под блоком 4 выше. чем остальные уже имеющиеся. -->
+    <referenceContainer name="page.main.title">
+      <block name="page.main.title.custom_product_block" template="Magento_Theme::customtext.phtml" after="page.main.title" before="product.info.addto"/>
+    </referenceContainer>
   </body>
 </page>
