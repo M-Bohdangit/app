@@ -21,9 +21,12 @@ if (trim($block->getPageHeading())) {
 <?php if ($titleHtml) : ?>
   <div class="page-title-wrapper<?= $block->escapeHtmlAttr($cssClass) ?>">
     <h1 class="page-title" <?php if ($block->getId()) : ?> id="<?= $block->escapeHtmlAttr($block->getId()) ?>" <?php endif; ?> <?php if ($block->getAddBaseAttributeAria()) : ?> aria-labelledby="<?= $block->escapeHtmlAttr($block->getAddBaseAttributeAria()) ?>" <?php endif; ?>>
+
       <!-- 2.1 Сделать написание текста в блоке 2 курсивным шрифтом -->
       <i><?= /* @noEscape */ $titleHtml ?> 2.1 </i>
     </h1>
+    <!-- 2.9 Добавить в layout любого из ранее созданных модулей свой аргумент, можно простой текст, и получить его в template, осуществив вывод этого текста на странице. Можно взять модуль получения и фильтрации коллекций и сделать заголовок на странице с помощью своего аргумента. -->
     <?= $block->getChildHtml() ?>
+    <?= "<b> (2.9) " . $block->getData('store_name') . "</b>" ?>
   </div>
 <?php endif; ?>

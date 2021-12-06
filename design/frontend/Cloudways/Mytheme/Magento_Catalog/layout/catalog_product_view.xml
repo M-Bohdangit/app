@@ -1,13 +1,23 @@
 <?xml version="1.0"?>
 <!--
 /**
-* Copyright © 2016 Magento. All rights reserved.
-* See COPYING.txt for license details.
-*/
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc
-/page_configuration.xsd">
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <css src="mage/gallery/gallery.css"/>
+  </head>
+  <update handle="catalog_product_opengraph" />
+  <update handle="page_calendar"/>
   <body>
+    <!-- 2.8 Найти в layout каталога или продукта инструкцию argument, которая передает простой текст. Заменить этот текст на свой,выполнив перезапись аргумента. -->
+    <referenceBlock name="product.info.description">
+      <arguments>
+        <argument name="title" translate="true" xsi:type="string">(2.8) Test Text!</argument>
+      </arguments>
+    </referenceBlock>
     <!-- 2.2 Переместить элементы 6-7 под элемент 5 -->
     <move element="product.info.sku" destination="product.info.type" />
     <move element="product.info.type" destination="product.info.price" />
