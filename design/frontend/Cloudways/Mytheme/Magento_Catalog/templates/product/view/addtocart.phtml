@@ -20,12 +20,12 @@
           </div>
         </div>
       <?php endif; ?>
-
+      <?= $block->getChildHtml('') ?>
       <div class="actions">
         <button type="submit" title="<?= $block->escapeHtmlAttr($buttonTitle) ?>" class="action primary tocart" id="product-addtocart-button" disabled>
           <span><?= $block->escapeHtml($buttonTitle) ?></span>
         </button>
-        <?= $block->getChildHtml('', true) ?>
+        <!-- //$block->getChildHtml('', true)  -->
       </div>
     </div>
   </div>
