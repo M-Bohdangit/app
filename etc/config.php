@@ -360,6 +360,7 @@ return [
         'Perspective_AllBuyersCollection' => 1,
         'Perspective_CatSpecProd' => 1,
         'Perspective_CurrentProdCat' => 0,
+        'Perspective_HelloWorld' => 1,
         'Perspective_ListProducts' => 1,
         'Perspective_ProductByID' => 1,
         'Perspective_ProductCollection' => 1,
