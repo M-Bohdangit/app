@@ -368,7 +368,7 @@ return [
         'Perspective_ProductCollectionCategory' => 1,
         'Perspective_ProductCollectionCategoryPrice' => 1,
         'Perspective_ProductCollectionFilter' => 1,
-        'Perspective_QuantityCurrentProduct' => 1,
+        'Perspective_QuantityCurrentProduct' => 0,
         'Perspective_TestCollectionOrders' => 1,
         'Perspective_TestGroupCustomers' => 1,
         'Perspective_TestImage' => 1,

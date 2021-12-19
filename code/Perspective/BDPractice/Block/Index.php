@@ -14,10 +14,7 @@ class Index extends \Magento\Framework\View\Element\Template
     $this->postCollectionFactory = $postCollectionFactory;
     parent::__construct($context, $data);
   }
-  /**
-   * 
-   * @return \Perspective\BDPractice\Model\ResourceModel\Post\Collection;
-   *  */
+
 
   public function getPostCollection()
   {
@@ -25,20 +22,14 @@ class Index extends \Magento\Framework\View\Element\Template
     $post->addFieldToSelect('*');
     return $post;
   }
-  /**
-   * 111
-   * @return \Perspective\BDPractice\Model\ResourceModel\Post\Collection;
-   *  */
+
   public function getPostCollectionForTwoCategories()
   {
     $post = $this->postCollectionFactory->create();
     $post->addFieldToSelect('*')->addFieldToFilter('IDCat', ['in' => [5, 16]]);
     return $post;
   }
-  /**
-   * 222
-   * @return \Perspective\BDPractice\Model\ResourceModel\Post\Collection;
-   *  */
+
   public function getPostCollectionForProduct()
   {
     $post = $this->postCollectionFactory->create();
