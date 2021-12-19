@@ -32,7 +32,7 @@ class Index extends \Magento\Framework\View\Element\Template
   public function getPostCollectionForTwoCategories()
   {
     $post = $this->postCollectionFactory->create();
-    $post->addFieldToSelect('*')->addFieldToFilter('IDCat', ['in' => [4, 14]]);
+    $post->addFieldToSelect('*')->addFieldToFilter('IDCat', ['in' => [5, 16]]);
     return $post;
   }
   /**
@@ -42,7 +42,7 @@ class Index extends \Magento\Framework\View\Element\Template
   public function getPostCollectionForProduct()
   {
     $post = $this->postCollectionFactory->create();
-    $post->addFieldToSelect('*')->addFieldToFilter('IDProd', ['eq' => 12]);
+    $post->addFieldToSelect('*')->addFieldToFilter('IDProd', ['eq' => 17]);
     return $post;
   }
 }
