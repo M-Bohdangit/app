@@ -2,11 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
   <head>
-    <title>3.2 Получить коллекцию отзывов, для продуктов двух категорий</title>
+    <title>3.3 Получить коллекцию отзывов на определенный продукт</title>
   </head>
   <body>
     <referenceContainer name="content">
-      <block class="Perspective\BDPractice\Block\Index" name="bd_practice_index_two" template="Perspective_BDPractice::bd_practice_two.phtml" />
+      <block class="Perspective\BDPractice\Block\Index" name="bdpractice_index_product" template="Perspective_BDPractice::bd_practice_product.phtml" />
     </referenceContainer>
   </body>
 </page>

@@ -6,7 +6,7 @@
   </head>
   <body>
     <referenceContainer name="content">
-      <block class="Perspective\BDPractice\Block\Index" name="bd_practice_index" template="Perspective_BDPractice::bd_practice_index_index.phtml" />
+      <block class="Perspective\BDPractice\Block\Index" name="bd_practice_index" template="Perspective_BDPractice::bd_practice_index.phtml" />
     </referenceContainer>
   </body>
 </page>
