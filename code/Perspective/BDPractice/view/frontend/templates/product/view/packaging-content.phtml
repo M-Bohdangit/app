@@ -1,0 +1,9 @@
+<?php
+
+/** @var \Perspective\BDPractice\Block\Category $block */ ?>
+<?php $currentProduct = $block->getCurrentProduct() ?>
+<?php $collection = $block->getPostCollectionForProductId($currentProduct->getData('entity_id')) ?>
+<?php $currentProduct ?>
+<?php foreach ($collection as $elem) : ?>
+                    <?= "<br>" . $elem->getData('TextRev') ?>
+<?php endforeach; ?>
