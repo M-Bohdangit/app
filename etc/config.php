@@ -358,6 +358,7 @@ return [
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Perspective_AllBuyersCollection' => 1,
+        'Perspective_BDPractice' => 1,
         'Perspective_CatSpecProd' => 1,
         'Perspective_CurrentProdCat' => 0,
         'Perspective_HelloWorld' => 1,
