@@ -346,6 +346,7 @@ return [
         'Amazon_Payment' => 1,
         'DCKAP_Datapatch' => 1,
         'DCKAP_MyModule' => 1,
+        'DCKAP_TaskDB' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Dotdigitalgroup_Chat' => 1,
         'Dotdigitalgroup_ChatGraphQl' => 1,
