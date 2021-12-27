@@ -5,7 +5,9 @@
     <column xsi:type="varchar" name="product_name" nullable="false" length="255" comment="Name"/>
     <column xsi:type="int" name="quantity" nullable="false"  comment="Quantity of goods sold"/>
     <column xsi:type="date" name="date" comment="Sale date" />
-    <column xsi:type="float" name="discount" nullable="false"  comment="discount"/>
+    <!-- <column xsi:type="float" name="discount" nullable="false"  comment="discount"/> -->
+    <!-- 5. Переименовать столбик Скидка на Бонус -->
+    <column xsi:type="float" name="bonus" onCreate="migrateDataFrom(discount)" nullable="false"  comment="bonus"/>
     <constraint xsi:type="primary" referenceId="PRIMARY">
       <column name="id"/>
     </constraint>

@@ -5,7 +5,8 @@
             "product_name": true,
             "quantity": true,
             "date": true,
-            "discount": true
+            "discount": true,
+            "bonus": true
         },
         "constraint": {
             "PRIMARY": true
