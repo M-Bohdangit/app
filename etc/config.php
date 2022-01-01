@@ -343,7 +343,6 @@ return [
         'Magento_WishlistSampleData' => 1,
         'AdminACL_Currency' => 1,
         'AdminACL_HelloWorld' => 0,
-        'AdminACL_RunOut' => 0,
         'Amazon_Core' => 1,
         'Amazon_Login' => 1,
         'Amazon_Payment' => 1,

@@ -1,22 +1,20 @@
 <?php
 
-namespace AdminACL\Currency\Block;
+namespace AdminACL\Currency\ViewModel;
 
-class Index extends \Magento\Framework\View\Element\Template
+class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
 	protected $_registry;
 	protected $helperData;
 
 	public function __construct(
 		\AdminACL\Currency\Helper\Data $helperData,
-		\Magento\Backend\Block\Template\Context $context,
-		\Magento\Framework\Registry  $registry,
-		array $data = []
+		\Magento\Framework\Registry  $registry
+
 
 	) {
 		$this->helperData = $helperData;
 		$this->_registry = $registry;
-		parent::__construct($context, $data);
 	}
 
 	/**

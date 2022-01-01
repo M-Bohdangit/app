@@ -1,9 +1,8 @@
 <?php
+$viewModel = $block->getData('view_model');
 
-/** @var \AdminACL\Currency\Block\Index $block */
-?>
-<?php if ($currentProduct = $block->getCurrentProduct()) : ?>
-    <h3><b><?= $block->getPriceInUah(); ?></b></h3>
-    <h3><b><?= $block->getPriceInRub(); ?></b></h3>
-    <h3><b><?= $block->getPriceInEuro(); ?></b></h3>
+if ($currentProd = $viewModel->getCurrentProduct()) : ?>
+    <h3><b><?= $viewModel->getPriceInUah(); ?></b></h3>
+    <h3><b><?= $viewModel->getPriceInRub(); ?></b></h3>
+    <h3><b><?= $viewModel->getPriceInEuro(); ?></b></h3>
 <?php endif ?>

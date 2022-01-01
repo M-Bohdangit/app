@@ -2,7 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
   <body>
     <referenceContainer name="product.info.main">
-      <block name="product.info.main.currency_block" class="AdminACL\Currency\Block\Index" template="AdminACL_Currency::Currency.phtml" after="product.info.price" before="product.price.tier"/>
+      <block class="Magento\Framework\View\Element\Template" name="product.info.main.currency_view_model" template="AdminACL_Currency::Currency.phtml" after="product.info.price" before="product.price.tier">
+        <arguments>
+          <argument name="view_model" xsi:type="object">AdminACL\Currency\ViewModel\Currency</argument>
+        </arguments>
+      </block>
     </referenceContainer>
   </body>
 </page>
