@@ -1,0 +1,7 @@
+<?php
+$ViewModel = $block->getData('view_model');
+
+if ($currentProduct = $ViewModel->getCurrentProduct()) : ?>
+    <h2><b><?= $ViewModel->getQuantity() ?></b></h2>
+
+<?php endif ?>

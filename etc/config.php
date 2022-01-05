@@ -342,6 +342,7 @@ return [
         'Magento_WishlistGraphQl' => 1,
         'Magento_WishlistSampleData' => 1,
         'AdminACL_Currency' => 1,
+        'AdminACL_Ends' => 1,
         'AdminACL_HelloWorld' => 0,
         'Amazon_Core' => 1,
         'Amazon_Login' => 1,

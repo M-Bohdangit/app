@@ -28,8 +28,9 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 
 
 	/**
-	 * @return string 
-	 *  check, instead of comma - dot
+	 * check, instead of comma - dot
+	 *
+	 * @return string
 	 */
 	public function checkUah()
 	{
@@ -38,8 +39,9 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 		return $uah;
 	}
 	/**
-	 * @return string 
-	 *  check, instead of comma - dot
+	 * check, instead of comma - dot
+	 *
+	 * @return string
 	 */
 	public function checkRub()
 	{
@@ -48,8 +50,9 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 		return $rub;
 	}
 	/**
-	 * @return string 
-	 *  check, instead of comma - dot
+	 * check, instead of comma - dot
+	 *
+	 * @return string
 	 */
 	public function checkEuro()
 	{
@@ -60,7 +63,7 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 
 
 	/**
-	 * @return str
+	 * @return string
 	 */
 	public function getPriceInUah()
 	{
@@ -73,7 +76,7 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 	}
 
 	/**
-	 * @return str
+	 * @return string
 	 */
 	public function getPriceInRub()
 	{
@@ -84,7 +87,7 @@ class Currency implements \Magento\Framework\View\Element\Block\ArgumentInterfac
 	}
 
 	/**
-	 * @return str
+	 * @return string
 	 */
 	public function getPriceInEuro()
 	{
