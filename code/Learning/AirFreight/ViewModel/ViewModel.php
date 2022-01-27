@@ -44,12 +44,12 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
    * 
    * @return str
    */
-  public function getAirShippingPriceBallon()
+  public function getAirShippingPriceBalloon()
   {
     if ($this->helperData->getGeneralConfig('enable')) {
       if ($this->getAirShippingMethod() === 'balloon') {
-        if ($this->helperData->getGeneralConfig('display_balloonlbs') < $this->getCurrentProduct()->getData('weight')) {
-          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getGeneralConfig('display_balloonlbs')) * $this->helperData->getGeneralConfig('display_balloonpr');
+        if ($this->helperData->getBalloonConfig('display_balloonlbs') < $this->getCurrentProduct()->getData('weight')) {
+          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getBalloonConfig('display_balloonlbs')) * $this->helperData->getBalloonConfig('display_balloonpr');
           return $airShippingPrice;
         }
       }
@@ -64,8 +64,8 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
   {
     if ($this->helperData->getGeneralConfig('enable')) {
       if ($this->getAirShippingMethod() === 'charter-plane') {
-        if ($this->helperData->getGeneralConfig('display_charterlbs') < $this->getCurrentProduct()->getData('weight')) {
-          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getGeneralConfig('display_charterlbs')) * $this->helperData->getGeneralConfig('display_charterpr');
+        if ($this->helperData->getCharterConfig('display_charterlbs') < $this->getCurrentProduct()->getData('weight')) {
+          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getCharterConfig('display_charterlbs')) * $this->helperData->getCharterConfig('display_charterpr');
           return $airShippingPrice;
         }
       }
@@ -80,8 +80,8 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
   {
     if ($this->helperData->getGeneralConfig('enable')) {
       if ($this->getAirShippingMethod() === 'high-speed-plane') {
-        if ($this->helperData->getGeneralConfig('display_speedlbs') < $this->getCurrentProduct()->getData('weight')) {
-          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getGeneralConfig('display_speedlbs')) * $this->helperData->getGeneralConfig('display_speedpr');
+        if ($this->helperData->getSpeedConfig('display_speedlbs') < $this->getCurrentProduct()->getData('weight')) {
+          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getSpeedConfig('display_speedlbs')) * $this->helperData->getSpeedConfig('display_speedpr');
           return $airShippingPrice;
         }
       }
@@ -96,8 +96,8 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
   {
     if ($this->helperData->getGeneralConfig('enable')) {
       if ($this->getAirShippingMethod() === 'spaceship') {
-        if ($this->helperData->getGeneralConfig('display_spaceshiplbs') < $this->getCurrentProduct()->getData('weight')) {
-          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getGeneralConfig('display_spaceshiplbs')) * $this->helperData->getGeneralConfig('display_spaceshippr');
+        if ($this->helperData->getSpaceshipConfig('display_spaceshiplbs') < $this->getCurrentProduct()->getData('weight')) {
+          $airShippingPrice = ($this->getCurrentProduct()->getData('weight') - $this->helperData->getSpaceshipConfig('display_spaceshiplbs')) * $this->helperData->getSpaceshipConfig('display_spaceshippr');
           return $airShippingPrice;
         }
       }
@@ -111,9 +111,9 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
    */
   public function getСhoiceShipping()
   {
-    if ($this->getAirShippingPriceBallon() > 0) {
+    if ($this->getAirShippingPriceBalloon() > 0) {
 
-      return $this->getAirShippingPriceBallon();
+      return $this->getAirShippingPriceBalloon();
     } elseif ($this->getAirShippingPriceCharterPlane() > 0) {
 
       return $this->getAirShippingPriceCharterPlane();
@@ -134,11 +134,11 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
    * 
    * @return str
    */
-  public function getAirShippingMessage()
+  public function getAirShippingShow()
   {
     if ($this->helperData->getGeneralConfig('enable')) {
       if ($this->getAirShippingMethod()) {
-        return '<hr />For carriage: ' . $this->getAirShippingMethod() . '<br /> will be charged an additional charge: $' . $this->getСhoiceShipping() . '<hr />';
+        return 'For transportation on : <b>' . $this->getAirShippingMethod() . '</b><br /> additional charges : $' . $this->getСhoiceShipping();
       }
     }
   }
