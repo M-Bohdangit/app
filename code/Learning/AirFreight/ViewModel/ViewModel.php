@@ -105,7 +105,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
   }
 
   /**
-   * 
+   * select delivery for message output
    *
    * @return str
    */
