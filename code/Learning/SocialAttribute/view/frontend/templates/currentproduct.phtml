@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @var \Learning\SocialAttribute\ViewModel\CustomViewModel 
+ */
+
+$viewModel = $block->getData('view_model');
+if ($currentProduct = $viewModel->getCurrentProduct()) : ?>
+       <h2><?= $viewModel->getSocialFinalPrice(); ?></h2>
+<?php endif ?>
