@@ -4,132 +4,138 @@ namespace TestTasks\Price\ViewModel;
 
 class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
-  protected $_registry;
-  protected $helperData;
+    protected $_registry;
+    protected $helperData;
 
-  public function __construct(
-    \TestTasks\Price\Helper\Data $helperData,
-    \Magento\Framework\Registry $registry,
-    array $data = []
-  ) {
-    $this->helperData = $helperData;
-    $this->_registry = $registry;
-  }
-  /** 
-   * 
-   * @return Magento\Catalog\Model\Product\Interceptor _eventObject: "product"
-   */
-  public function getCurrentProduct()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      $currentProduct = $this->_registry->registry('current_product');
-      return $currentProduct;
+    /**
+     * Construct
+     *
+     * @param \TestTasks\Price\Helper\Data $helperData
+     * @param \Magento\Framework\Registry $registry
+     */
+    public function __construct(
+        \TestTasks\Price\Helper\Data $helperData,
+        \Magento\Framework\Registry $registry
+    ) {
+        $this->helperData = $helperData;
+        $this->_registry = $registry;
     }
-  }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getBasePrice()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      if ($this->getCurrentProduct()) {
+    /**
+     * Сheck if the module is enabled
+     *
+     * @return bull
+     */
+    public function getModuleEnable()
+    {
+        return $this->helperData->getGeneralConfig('enable');
+    }
+
+
+    /** 
+     * 
+     * @return Magento\Catalog\Model\Product\Interceptor
+     */
+    public function getCurrentProduct()
+    {
+
+        return $this->_registry->registry('current_product');
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getBasePrice()
+    {
+
+        if (!$this->getCurrentProduct()) {
+            return null;
+        }
+
         if ($selectValue = $this->helperData->getGeneralConfig('base_price')) {
-          if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
-            $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getMinRegularAmount()->getValue();
-            return 'Base price: $' . $basePrice;
-          } elseif ($this->getCurrentProduct()->getTypeId() == 'simple') {
-            $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getValue();
-            return 'Base price: $' . $basePrice;
-          } else {
-            return null;
-          }
+            if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
+                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getMinRegularAmount()->getValue();
+                return __('Base price: $') . $basePrice;
+            }
+            if ($this->getCurrentProduct()->getTypeId() == 'simple') {
+                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getValue();
+                return __('Base price: $') . $basePrice;
+            }
         }
-      }
-    }
-  }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getFinalPrice()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      if ($this->getCurrentProduct()) {
+        return null;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getFinalPrice()
+    {
+
+        if (!$this->getCurrentProduct()) {
+            return null;
+        }
+
         if ($selectValue = $this->helperData->getGeneralConfig('final_price')) {
-          if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
-            $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getMinimalPrice()->getValue();
-            return 'Final price: $' . $finalPrice;
-          } elseif ($this->getCurrentProduct()->getTypeId() == 'simple') {
-            $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getValue();
-            return 'Final price: $' . $finalPrice;
-          } else {
-            return null;
-          }
+            if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
+                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getMinimalPrice()->getValue();
+                return __('Final price: $') . $finalPrice;
+            }
+            if ($this->getCurrentProduct()->getTypeId() == 'simple') {
+                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getValue();
+                return __('Final price: $') . $finalPrice;
+            }
         }
-      }
+        return null;
     }
-  }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getSpecialPrice()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      if ($this->getCurrentProduct()) {
-        if ($selectValue = $this->helperData->getGeneralConfig('special_price')) {
-          if ($this->getCurrentProduct()->getTypeId() == 'configurable' || $this->getCurrentProduct()->getTypeId() == 'simple') {
-            $specialPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('special_price')->getValue();
-            return 'Special price: $' . $specialPrice;
-          } else {
-            return null;
-          }
-        }
-      }
-    }
-  }
+    /**
+     * 
+     * @return string
+     */
+    public function getSpecialPrice()
+    {
 
-  /**
-   * 
-   * @return string
-   */
-  public function getTierPrice()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      if ($this->getCurrentProduct()) {
-        if ($selectValue = $this->helperData->getGeneralConfig('tier_price')) {
-          if ($this->getCurrentProduct()->getTypeId() == 'configurable' || $this->getCurrentProduct()->getTypeId() == 'simple') {
-            $tierPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('tier_price')->getValue();
-            return 'Tier price: $' . $tierPrice;
-          } else {
-            return null;
-          }
+        if ($this->getCurrentProduct()) {
+            if ($selectValue = $this->helperData->getGeneralConfig('special_price')) {
+                $specialPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('special_price')->getValue();
+                return __('Special price: $') . $specialPrice;
+            }
         }
-      }
+        return null;
     }
-  }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getRulePrice()
-  {
-    if ($this->helperData->getGeneralConfig('enable')) {
-      if ($this->getCurrentProduct()) {
-        if ($selectValue = $this->helperData->getGeneralConfig('catalog_rule_price')) {
-          if ($this->getCurrentProduct()->getTypeId() == 'configurable' || $this->getCurrentProduct()->getTypeId() == 'simple') {
-            $rulePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('catalog_rule_price')->getValue();
-            return 'Catalog rule price: ' . $rulePrice;
-          } else {
-            return null;
-          }
+    /**
+     * 
+     * @return string
+     */
+    public function getTierPrice()
+    {
+
+        if ($this->getCurrentProduct()) {
+            if ($selectValue = $this->helperData->getGeneralConfig('tier_price')) {
+                $tierPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('tier_price')->getValue();
+                return __('Tier price: $') . $tierPrice;
+            }
         }
-      }
+        return null;
     }
-  }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getRulePrice()
+    {
+
+        if ($this->getCurrentProduct()) {
+            if ($selectValue = $this->helperData->getGeneralConfig('catalog_rule_price')) {
+                $rulePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('catalog_rule_price')->getValue();
+                return __('Catalog rule price: $') . $rulePrice;
+            }
+        }
+        return null;
+    }
 }

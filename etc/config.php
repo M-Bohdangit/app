@@ -360,7 +360,7 @@ return [
         'Klarna_Kp' => 1,
         'Klarna_Onsitemessaging' => 1,
         'Klarna_KpGraphQl' => 1,
-        'Learning_AirFreight' => 1,
+        'Learning_AirFreight' => 0,
         'Learning_CategoryAttribute' => 0,
         'Learning_CategoryAttribute2' => 0,
         'Learning_ClothingMaterial' => 1,
