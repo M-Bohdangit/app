@@ -1,0 +1,11 @@
+<?php
+
+/** @var \TestTasks\Price\ViewModel\ViewModel;**/
+?>
+<?php $viewModel = $block->getData('view_model'); ?>
+
+<h2><b><?= $viewModel->getBasePrice() ?></b></h2>
+<h2><b><?= $viewModel->getFinalPrice() ?></b></h2>
+<h2><b><?= $viewModel->getSpecialPrice() ?></b></h2>
+<h2><b><?= $viewModel->getTierPrice() ?></b></h2>
+<h2><b><?= $viewModel->getRulePrice() ?></b></h2>
