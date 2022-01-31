@@ -395,7 +395,7 @@ return [
         'Perspective_TutorialProductPage' => 0,
         'RH_UiExample' => 0,
         'Temando_ShippingRemover' => 1,
-        'TestTasks_Price' => 1,
+        'TestTasks_Price' => 0,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
         'Vertex_RequestLoggingApi' => 1,
