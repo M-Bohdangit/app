@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
   <router id="standard">
-    <route id="task_price" frontName="task-price">
-      <module name="TestTasks_Price" />
+    <route id="task_timer" frontName="task-timer">
+      <module name="TestTasks_Timer" />
     </route>
   </router>
 </config>
