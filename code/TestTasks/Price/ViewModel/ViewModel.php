@@ -1,6 +1,9 @@
 <?php
 
-namespace TestTasks\Price\ViewModel;
+use Magento\Framework\Registry;
+use TestTasks\Price\Helper\Data;
+
+namespace  TestTasks\Price\ViewModel;
 
 class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
@@ -10,12 +13,12 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     /**
      * Construct
      *
-     * @param \TestTasks\Price\Helper\Data $helperData
-     * @param \Magento\Framework\Registry $registry
+     * @param Data $helperData
+     * @param Registry $registry
      */
     public function __construct(
-        \TestTasks\Price\Helper\Data $helperData,
-        \Magento\Framework\Registry $registry
+        Data $helperData,
+        Registry $registry
     ) {
         $this->helperData = $helperData;
         $this->_registry = $registry;
@@ -32,8 +35,8 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
 
-    /** 
-     * 
+    /**
+     * Get Current product
      * @return Magento\Catalog\Model\Product\Interceptor
      */
     public function getCurrentProduct()
@@ -43,7 +46,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getBasePrice()
@@ -68,7 +71,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getFinalPrice()
@@ -92,7 +95,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getSpecialPrice()
@@ -108,7 +111,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getTierPrice()
@@ -124,7 +127,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     }
 
     /**
-     * 
+     *
      * @return string
      */
     public function getRulePrice()
