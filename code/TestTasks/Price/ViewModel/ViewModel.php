@@ -17,8 +17,8 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
      * @param Registry $registry
      */
     public function __construct(
-        Data     $helperData,
-        Registry $registry
+        Data $helperData,
+        Registry  $registry
     )
     {
         $this->helperData = $helperData;
