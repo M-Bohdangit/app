@@ -9,10 +9,6 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use TestTasks\Timer\Registry\CurrentProduct;
 
 
-
-/**
- * This clsass  logic to model
- */
 class ViewModel implements ArgumentInterface
 {
 
@@ -36,8 +32,7 @@ class ViewModel implements ArgumentInterface
      * @param Rule           $rules          Rule
      */
     public function __construct(
-        CurrentProduct   $currentProduct,
-        //        Registry $registry,
+        CurrentProduct $currentProduct,
         Rule           $rules
     ) {
 
@@ -46,6 +41,8 @@ class ViewModel implements ArgumentInterface
     }
 
     /**
+     * Get current product
+     *
      * @return ProductInterface
      */
     public function getCurrentProduct(): ProductInterface
@@ -66,7 +63,11 @@ class ViewModel implements ArgumentInterface
         return false;
     }
 
-    public function getSpecialPriceEndDate()
+    /**
+     *
+     * @return string
+     */
+    public function getSpecialPriceEnd()
     {
         if ($this->isCurrentProductSimple()) {
             $currentProduct = $this->getCurrentProduct();
@@ -76,11 +77,11 @@ class ViewModel implements ArgumentInterface
                     $date = date_create($specialPriceEndDate);
                     return $date->Format('Y-m-d');
                 }
-                return '';
+                return null;
             }
-            return '';
+            return null;
         }
-        return '';
+        return null;
     }
 
     /**
@@ -152,21 +153,21 @@ class ViewModel implements ArgumentInterface
     public function getSmallestDate()
     {
         if ($this->isCurrentProductSimple()) {
-            $specialPriceEndaDate = $this->getSpecialPriceEndDate();
+            $specialPriceEndaDate = $this->getSpecialPriceEnd();
             $rulePriceEndDate = $this->getRulePriceEndDate();
-            if ($specialPriceEndaDate == null && $rulePriceEndDate !== null) {
-                return $rulePriceEndDate;
+            if ($specialPriceEndaDate == null &&  $rulePriceEndDate !== null) {
+                return  $rulePriceEndDate;
             }
-            if ($specialPriceEndaDate !== null && $rulePriceEndDate == null) {
-                return $specialPriceEndaDate;
+            if ($specialPriceEndaDate !== null &&  $rulePriceEndDate == null) {
+                return  $specialPriceEndaDate;
             }
-            // swich case
-            if ($specialPriceEndaDate > $rulePriceEndDate) {
-                return $rulePriceEndDate;
-            } else if ($specialPriceEndaDate < $rulePriceEndDate) {
-                return $specialPriceEndaDate;
-            } else if ($specialPriceEndaDate == $rulePriceEndDate) {
-                return $specialPriceEndaDate;
+
+            if ($specialPriceEndaDate >  $rulePriceEndDate) {
+                return  $rulePriceEndDate;
+            } elseif ($specialPriceEndaDate <  $rulePriceEndDate) {
+                return  $specialPriceEndaDate;
+            } elseif ($specialPriceEndaDate ==  $rulePriceEndDate) {
+                return  $specialPriceEndaDate;
             }
         }
     }

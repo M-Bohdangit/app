@@ -1,11 +1,14 @@
 <?php
 
-/** @var \TestTasks\Timer\ViewModel\ViewModel */
+/** @var ViewModel */
+
+use TestTasks\Timer\ViewModel\ViewModel;
+
 ?>
 <?php $viewModel = $this->getData('view_model'); ?>
 
 <?php if ($viewModel->isCurrentProductSimple()) : ?>
-    <?php if ($viewModel->getRulePriceEndDate() !== null || $viewModel->getSpecialPriceEndDate() !== null) : ?>
+    <?php if ($viewModel->getRulePriceEndDate() !== null || $viewModel->getSpecialPriceEnd() !== null) : ?>
         <h2>
             <div id="getting-started"></div>
 
@@ -13,11 +16,11 @@
                 require([
                     'jquery',
                     'countdown'
-                ], function (
+                ], function(
                     $, countdown
                 ) {
                     jQuery("#getting-started")
-                        .countdown("<?= $viewModel->getSmallestDate() ?>", function (event) {
+                        .countdown("<?= $viewModel->getSmallestDate() ?>", function(event) {
                             jQuery(this).text(
                                 event.strftime('%D Days %H Hours %M Minutes %S Seconds')
                             );
@@ -25,8 +28,9 @@
                 });
             </script>
         </h2>
-        <h3> <?= 'Special Price End Date   -   ' . $viewModel->getSpecialPriceEndDate() ?></h3>
+        <h3> <?= 'Special Price End Date   -   ' . $viewModel->getSpecialPriceEnd() ?></h3>
     <?php endif ?>
+
 
 
     <?php if (!$viewModel->getRulesNames() == null) : ?>
