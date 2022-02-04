@@ -8,7 +8,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use TestTasks\Timer\Registry\CurrentProduct;
 
-
 class ViewModel implements ArgumentInterface
 {
 
@@ -24,21 +23,25 @@ class ViewModel implements ArgumentInterface
      * @var currentProduct
      */
     protected CurrentProduct $currentProduct;
+    /**
+
 
     /**
      * Constructor
      *
      * @param CurrentProduct $currentProduct CurrentProduct
-     * @param Rule           $rules          Rule
+     * @param Rule $rules Rule
      */
     public function __construct(
         CurrentProduct $currentProduct,
-        Rule           $rules
+        Rule           $rules,
     ) {
 
         $this->rules = $rules;
         $this->currentProduct = $currentProduct;
     }
+
+
 
     /**
      * Get current product
@@ -47,6 +50,7 @@ class ViewModel implements ArgumentInterface
      */
     public function getCurrentProduct(): ProductInterface
     {
+
         return $this->currentProduct->get();
     }
 
@@ -55,7 +59,7 @@ class ViewModel implements ArgumentInterface
      *
      * @return bool
      */
-    public function isCurrentProductSimple(): bool
+    public function isSimpleProduct(): bool
     {
         if ($this->getCurrentProduct()->getTypeId() == 'simple') {
             return true;
@@ -64,35 +68,34 @@ class ViewModel implements ArgumentInterface
     }
 
     /**
+     * Special Price End
      *
      * @return string
      */
-    public function getSpecialPriceEnd()
+    public function getSpecialPriceEnd(): string
     {
-        if ($this->isCurrentProductSimple()) {
+        if ($this->isSimpleProduct()) {
             $currentProduct = $this->getCurrentProduct();
-            $specialPriceEndDate = $currentProduct->getSpecialToDate();
-            if ($specialPriceEndDate !== false) {
-                if ($specialPriceEndDate !== null) {
-                    $date = date_create($specialPriceEndDate);
-                    return $date->Format('Y-m-d');
-                }
-                return null;
+            $priceEnd = $currentProduct->getSpecialToDate();
+            if ($priceEnd !== false) {
+                $date = date_create($priceEnd);
+                return $date->Format('Y-m-d');
             }
-            return null;
+            return '';
         }
-        return null;
+        return '';
     }
 
     /**
      * Get rule price end date
      *
      * @return mixed
+     *
      * @throws LocalizedException
      */
-    public function getRulePriceEndDate()
+    public function getRulePriceEnd()
     {
-        if ($this->isCurrentProductSimple()) {
+        if ($this->isSimpleProduct()) {
             $rulesResoutseCollection = $this->rules->getResourceCollection();
             $rules = $rulesResoutseCollection->addFieldToFilter('is_active', 1);
             $productId = $this->getCurrentProduct()->getData('entity_id');
@@ -107,7 +110,6 @@ class ViewModel implements ArgumentInterface
                     }
                 }
                 if ($date) {
-                    $test = date_create($date)->Format('Y-m-d');
                     return date_create($date)->Format('Y-m-d');
                 }
                 return null;
@@ -120,11 +122,12 @@ class ViewModel implements ArgumentInterface
      * Get rules names
      *
      * @return mixed
+     *
      * @throws LocalizedException
      */
     public function getRulesNames()
     {
-        if ($this->isCurrentProductSimple()) {
+        if ($this->isSimpleProduct()) {
             $rulesResoutseCollection = $this->rules->getResourceCollection();
             $rules = $rulesResoutseCollection->addFieldToFilter('is_active', 1);
             $productId = $this->getCurrentProduct()->getData('entity_id');
@@ -150,25 +153,27 @@ class ViewModel implements ArgumentInterface
      * @return mixed
      * @throws LocalizedException
      */
-    public function getSmallestDate()
+    public
+    function getSmallestDate()
     {
-        if ($this->isCurrentProductSimple()) {
-            $specialPriceEndaDate = $this->getSpecialPriceEnd();
-            $rulePriceEndDate = $this->getRulePriceEndDate();
-            if ($specialPriceEndaDate == null &&  $rulePriceEndDate !== null) {
-                return  $rulePriceEndDate;
+        if ($this->isSimpleProduct()) {
+            $endSpecialPrice = $this->getSpecialPriceEnd();
+            $endRulePrice = $this->getRulePriceEnd();
+            if ($endSpecialPrice == null && $endRulePrice !== null) {
+                return $endRulePrice;
             }
-            if ($specialPriceEndaDate !== null &&  $rulePriceEndDate == null) {
-                return  $specialPriceEndaDate;
+            if ($endSpecialPrice !== null && $endRulePrice == null) {
+                return $endSpecialPrice;
             }
 
-            if ($specialPriceEndaDate >  $rulePriceEndDate) {
-                return  $rulePriceEndDate;
-            } elseif ($specialPriceEndaDate <  $rulePriceEndDate) {
-                return  $specialPriceEndaDate;
-            } elseif ($specialPriceEndaDate ==  $rulePriceEndDate) {
-                return  $specialPriceEndaDate;
+            if ($endSpecialPrice > $endRulePrice) {
+                return $endRulePrice;
+            } else if ($endSpecialPrice < $endRulePrice) {
+                return $endSpecialPrice;
+            } else if ($endSpecialPrice == $endRulePrice) {
+                return $endSpecialPrice;
             }
         }
     }
 }
+
