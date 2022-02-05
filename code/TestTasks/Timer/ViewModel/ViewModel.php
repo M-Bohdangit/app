@@ -24,13 +24,11 @@ class ViewModel implements ArgumentInterface
      */
     protected CurrentProduct $currentProduct;
     /**
-
-
     /**
      * Constructor
      *
      * @param CurrentProduct $currentProduct CurrentProduct
-     * @param Rule $rules Rule
+     * @param Rule           $rules          Rule
      */
     public function __construct(
         CurrentProduct $currentProduct,
@@ -89,11 +87,11 @@ class ViewModel implements ArgumentInterface
     /**
      * Get rule price end date
      *
-     * @return mixed
+     * @return string
      *
      * @throws LocalizedException
      */
-    public function getRulePriceEnd()
+    public function getRulePriceEnd(): string
     {
         if ($this->isSimpleProduct()) {
             $rulesResoutseCollection = $this->rules->getResourceCollection();
@@ -112,10 +110,11 @@ class ViewModel implements ArgumentInterface
                 if ($date) {
                     return date_create($date)->Format('Y-m-d');
                 }
-                return null;
+                return '';
             }
-            return null;
+            return '';
         }
+        return '';
     }
 
     /**
