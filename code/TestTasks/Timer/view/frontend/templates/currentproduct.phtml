@@ -27,14 +27,14 @@ use TestTasks\Timer\ViewModel\ViewModel;
                 });
             </script>
         </h2>
-        <h3> <?= 'Special Price End Date   -   ' . $viewModel->getSpecialPriceEnd() ?></h3>
+        <h3> <?= '<hr>Special Price End Date   -   ' . $viewModel->getSpecialPriceEnd() ?></h3>
     <?php endif ?>
 
 
 
     <?php if (!$viewModel->getRulesNames() == null) : ?>
         <?php foreach ($viewModel->getRulesNames() as $name) : ?>
-            <h3> <?= $name['name'] . '  -  ' . $name['date'] ?> </h3>
+            <h3> <?= '<hr>'.$name['name'] . '  -  ' . $name['date'] ?> </h3>
         <?php endforeach ?>
     <?php endif ?>
 <?php endif ?>

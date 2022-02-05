@@ -34,7 +34,7 @@ class ViewModel implements ArgumentInterface
      */
     public function __construct(
         CurrentProduct $currentProduct,
-        Rule           $rules,
+        Rule           $rules
     ) {
 
         $this->rules = $rules;
