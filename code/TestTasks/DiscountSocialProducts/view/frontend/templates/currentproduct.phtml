@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @var \TestTasks\DiscountSocialProducts\ViewModel\CustomViewModel
+ * @var Magento\Framework\View\Element\Template $block
+ */
+
+
+$viewModel = $block->getData('view_model');
+if ($currentProduct = $viewModel->getCurrentProduct()) : ?>
+    <h2><?= $viewModel->getSocialFinalPrice(); ?></h2>
+<?php endif ?>

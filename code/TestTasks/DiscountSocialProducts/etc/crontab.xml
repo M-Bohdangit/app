@@ -1,0 +1,14 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="discount_group_cron">
+        <job name="discount_enable"
+             instance="TestTasks\DiscountSocialProducts\Cron\Model\Config\Backend\Product\Alert.php"
+             method="afterSave">
+            <config_path>crontab/default/jobs/discount_enable/schedule/cron_expr</config_path>
+        </job>
+        <job name="discount_disable"
+             instance="TestTasks\DiscountSocialProducts\Cron\Model\Config\Backend\Product\CronDisable.php"
+             method="afterSave">
+            <config_path>crontab/default/jobs/discount_disable/schedule/cron_expr</config_path>
+        </job>
+    </group>
+</config>
