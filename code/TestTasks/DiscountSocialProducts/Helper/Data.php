@@ -2,19 +2,38 @@
 
 namespace TestTasks\DiscountSocialProducts\Helper;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\App\Helper\Context;
 
 class Data extends AbstractHelper
 {
 
     const XML_PATH_SOCIALATTRIBUTE = 'socialattribute/';
+    /**
+     * @var WriterInterface;
+     */
+    protected $configWriter;
 
     /**
-     * Get Config Value
+     * Constructor
      *
-     * @param $field field
-     * @param $storeId
+     * @param Context         $context      Context
+     * @param WriterInterface $configWriter WriterInterface
+     */
+    public function __construct(
+        Context         $context,
+        WriterInterface $configWriter
+    ) {
+        parent::__construct($context);
+        $this->configWriter = $configWriter;
+    }
+
+    /**
+     * @param $field   $field
+     * @param $storeId $storeId
      *
      * @return mixed
      */
@@ -24,10 +43,8 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Get General Config
-     *
-     * @param $code
-     * @param $storeId
+     * @param $code    $code
+     * @param $storeId $storeId
      *
      * @return mixed
      */
@@ -37,94 +54,25 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Get Discount Day Enable
-     *
-     * @param $code
-     * @param $storeId
+     * @param $code    $code
+     * @param $storeId $storeId
      *
      * @return mixed
      */
-    public function getDiscountDayEnable($code, $storeId = null)
+    public function getCronConfig($code, $storeId = null)
     {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'check_1/' . $code, $storeId);
+
+        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'cron/' . $code, $storeId);
     }
 
     /**
-     * Get Discount Day
+     * @param $value $value
      *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed
+     * @return void
      */
-    public function getDiscountDay($code, $storeId = null)
+    public function setCronConfig($value)
     {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'discount_day/' . $code, $storeId);
-    }
-
-    /**
-     * Get Discount Time Enable
-     *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed
-     */
-    public function getDiscountTimeEnable($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'check_2/' . $code, $storeId);
-    }
-
-    /**
-     * Get Time Start
-     *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed
-     */
-    public function getTimeStart($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'time_start/' . $code, $storeId);
-    }
-
-    /**
-     * Get Time End
-     *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed
-     */
-    public function getTimeEnd($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'time_end/' . $code, $storeId);
-    }
-
-    /**
-     * Get Cron Enable
-     *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed mixed
-     */
-    public function getCronEnable($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'enable_cron/' . $code, $storeId);
-    }
-
-    /**
-     * Get Discount Category
-     *
-     * @param $code
-     * @param $storeId
-     *
-     * @return mixed
-     */
-    public function getDiscountCategory($code, $storeId = null)
-    {
-        return $this->getConfigValue(self::XML_PATH_SOCIALATTRIBUTE . 'discount_category/' . $code, $storeId);
+        return $this->configWriter->save(self::XML_PATH_SOCIALATTRIBUTE . 'cron/enable_cron', $value, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
     }
 
 }

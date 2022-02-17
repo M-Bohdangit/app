@@ -3,7 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="product.info.main">
-            <block name="product.info.main.testtasks_social_block" class="Magento\Framework\View\Element\Template"
+            <block name="product.info.main.testtasks_discount_social_block" class="Magento\Framework\View\Element\Template"
                    template="TestTasks_DiscountSocialProducts::currentproduct.phtml" after="product.info.price"
                    before="product.price.tier">
                 <arguments>

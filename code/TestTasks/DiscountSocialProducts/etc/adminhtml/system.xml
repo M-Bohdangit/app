@@ -8,7 +8,7 @@
         <section id="socialattribute" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1"
                  showInStore="1">
             <class>separator-top</class>
-            <label>Social product</label>
+            <label>Cron-Social</label>
             <tab>testtasks</tab>
             <resource>TestTasks_DiscountSocialProducts::socialattribute_config</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
@@ -19,16 +19,14 @@
                     <label>Module Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="enable_cron" translate="label" type="select" sortOrder="1" showInDefault="1"
-                       showInWebsite="0"
-                       showInStore="0">
-                    <label>Cron Enable</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
+
                 <field id="display_social" translate="label" type="text" sortOrder="2" showInDefault="1"
                        showInWebsite="0" showInStore="0">
-                    <label>Percent discount</label>
+                    <label>Percent Discount</label>
                     <comment>Enter %</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
                 </field>
 
 
@@ -36,14 +34,18 @@
                        showInStore="0">
                     <label>Discount Day Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
                 </field>
-                <field id="discount_day" translate="label" type="select" sortOrder="4" showInDefault="1"
+                    <field id="discount_day" translate="label" type="select" sortOrder="4" showInDefault="1"
                        showInWebsite="0" showInStore="0">
                     <source_model>TestTasks\DiscountSocialProducts\Cron\Model\Config\Source\Frequency</source_model>
                     <backend_model>TestTasks\DiscountSocialProducts\Cron\Model\Config\Backend\Product\Alert</backend_model>
                     <label>Discount Day</label>
                     <depends>
                         <field id="check_1">1</field>
+                        <field id="enable">1</field>
                     </depends>
                 </field>
 
@@ -52,13 +54,16 @@
                        showInStore="0">
                     <label>Discount Time Enable</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
                 </field>
                 <field id="time_start" translate="label" type="time" sortOrder="6" showInDefault="1"
                        showInWebsite="1" showInStore="1">
                     <label>Time Start</label>
                     <depends>
                         <field id="check_2">1</field>
+                        <field id="enable">1</field>
                     </depends>
                 </field>
                 <field id="time_end" translate="label" type="time" sortOrder="7" showInDefault="1"
@@ -66,11 +71,17 @@
                     <label>Time End</label>
                     <depends>
                         <field id="check_2">1</field>
+                        <field id="enable">1</field>
                     </depends>
                 </field>
-                <field id="discount_category" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Discount Category:</label>
-                    <source_model>TestTasks\DiscountSocialProducts\Cron\Model\Config\Source\Category</source_model>
+                </group>
+            <group id="cron" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Cron</label>
+                <field id="enable_cron" translate="label" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Cron Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
         </section>

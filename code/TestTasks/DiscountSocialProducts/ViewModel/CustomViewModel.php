@@ -2,53 +2,72 @@
 
 namespace TestTasks\DiscountSocialProducts\ViewModel;
 
-use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Registry;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 use TestTasks\DiscountSocialProducts\Helper\Data;
 
-class CustomViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterface
+class CustomViewModel implements ArgumentInterface
 {
-    protected Data $helperData;
-    protected ProductRepository $productRepository;
+    /**
+     * @var Registry;
+     */
+    protected $_registry;
+    /**
+     * @var Data;
+     */
+    protected $helperData;
 
-
-
+    /**
+     * /**
+     *
+     * @param Data     $helperData Data
+     * @param Registry $registry   Registry
+     */
     public function __construct(
-        Data              $helperData,
-        ProductRepository $productRepository,
-        Registry          $registry
+        Data     $helperData,
+        Registry $registry
     ) {
         $this->helperData = $helperData;
-        $this->_productRepository = $productRepository;
         $this->_registry = $registry;
-    }
-
-    public function getSocial($_product)
-    {
-        if ($this->helperData->getGeneralConfig('enable')) {
-            $currentProduct = $this->_productRepository->getById($_product->getData('entity_id'));
-            if ($currentProduct->getData('discount_social_attribute')) {
-                return '<b>SOCIAL PRODUCT</b>';
-            }
-        }
-        return '';
     }
 
     public function getCurrentProduct()
     {
         if ($this->helperData->getGeneralConfig('enable')) {
-            $currentProduct = $this->_registry->registry('current_product');
-            return $currentProduct;
+            return $this->_registry->registry('current_product');
         }
     }
 
-
-    public function getSocialFinalPrice()
+    /**
+     * @return mixed|void
+     */
+    public function getPercentDiscount()
     {
-
-        if ($this->helperData->getGeneralConfig('enable') && $this->getCurrentProduct()->getData('discount_social_attribute')) {
-            $SocialFinalPrice = $this->getCurrentProduct()->getFinalPrice() - ($this->getCurrentProduct()->getFinalPrice() / 100) * $this->helperData->getGeneralConfig('display_social');
-            return 'Discount : ' . $this->helperData->getGeneralConfig('display_social') . '%<br /> <br /> <b>Final price : $' . $SocialFinalPrice . '</b>';
+        if ($this->helperData->getGeneralConfig('enable')) {
+            return $this->helperData->getGeneralConfig('display_social');
         }
+    }
+
+    /**
+     * Get regular price
+     *
+     * @return mixed
+     */
+    public function getRegularPrice()
+    {
+        return $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getValue();
+    }
+
+    /**
+     * Show message
+     *
+     * @return string
+     */
+    public function showMessage(): string
+    {
+        if ($this->helperData->getCronConfig('enable_cron') && $this->getCurrentProduct()->getData('discount_social_attribute')) {
+            return 'There is a grace period, the price $' . $this->getRegularPrice() . ' is reduced by ' . $this->getPercentDiscount() . ' %';
+        }
+        return '';
     }
 }

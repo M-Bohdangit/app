@@ -377,6 +377,7 @@ return [
         'Perspective_CatSpecProd' => 1,
         'Perspective_CurrentProdCat' => 0,
         'Perspective_Demo' => 0,
+        'Perspective_FirstTask' => 0,
         'Perspective_HelloWorld' => 1,
         'Perspective_ListProducts' => 1,
         'Perspective_ProductByID' => 1,

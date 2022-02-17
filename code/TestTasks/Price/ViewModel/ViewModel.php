@@ -1,26 +1,31 @@
 <?php
 
+namespace TestTasks\Price\ViewModel;
+
 use Magento\Framework\Registry;
 use TestTasks\Price\Helper\Data;
 
-namespace TestTasks\Price\ViewModel;
-
 class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
+    /**
+     * @var Registry
+     */
     protected $_registry;
+    /**
+     * @var Data
+     */
     protected $helperData;
 
     /**
      * Construct
      *
-     * @param Data $helperData
+     * @param Data     $helperData
      * @param Registry $registry
      */
     public function __construct(
-        Data $helperData,
-        Registry  $registry
-    )
-    {
+        Data     $helperData,
+        Registry $registry
+    ) {
         $this->helperData = $helperData;
         $this->_registry = $registry;
     }
@@ -32,7 +37,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
      */
     public function getModuleEnable()
     {
-        return $this->helperData->getGeneralConfig( 'enable' );
+        return $this->helperData->getGeneralConfig('enable');
     }
 
     /**
@@ -42,7 +47,7 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     public function getCurrentProduct()
     {
 
-        return $this->_registry->registry( 'current_product' );
+        return $this->_registry->registry('current_product');
     }
 
     /**
@@ -56,14 +61,14 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
             return null;
         }
 
-        if ($selectValue = $this->helperData->getGeneralConfig( 'base_price' )) {
+        if ($selectValue = $this->helperData->getGeneralConfig('base_price')) {
             if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
-                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'regular_price' )->getMinRegularAmount()->getValue();
-                return __( 'Base price: $' ) . $basePrice;
+                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getMinRegularAmount()->getValue();
+                return __('Base price: $') . $basePrice;
             }
             if ($this->getCurrentProduct()->getTypeId() == 'simple') {
-                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'regular_price' )->getValue();
-                return __( 'Base price: $' ) . $basePrice;
+                $basePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('regular_price')->getValue();
+                return __('Base price: $') . $basePrice;
             }
         }
 
@@ -81,14 +86,14 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
             return null;
         }
 
-        if ($selectValue = $this->helperData->getGeneralConfig( 'final_price' )) {
+        if ($selectValue = $this->helperData->getGeneralConfig('final_price')) {
             if ($this->getCurrentProduct()->getTypeId() == 'configurable') {
-                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'final_price' )->getMinimalPrice()->getValue();
-                return __( 'Final price: $' ) . $finalPrice;
+                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getMinimalPrice()->getValue();
+                return __('Final price: $') . $finalPrice;
             }
             if ($this->getCurrentProduct()->getTypeId() == 'simple') {
-                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'final_price' )->getValue();
-                return __( 'Final price: $' ) . $finalPrice;
+                $finalPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('final_price')->getValue();
+                return __('Final price: $') . $finalPrice;
             }
         }
         return null;
@@ -102,9 +107,9 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     {
 
         if ($this->getCurrentProduct()) {
-            if ($selectValue = $this->helperData->getGeneralConfig( 'special_price' )) {
-                $specialPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'special_price' )->getValue();
-                return __( 'Special price: $' ) . $specialPrice;
+            if ($selectValue = $this->helperData->getGeneralConfig('special_price')) {
+                $specialPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('special_price')->getValue();
+                return __('Special price: $') . $specialPrice;
             }
         }
         return null;
@@ -118,9 +123,9 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     {
 
         if ($this->getCurrentProduct()) {
-            if ($selectValue = $this->helperData->getGeneralConfig( 'tier_price' )) {
-                $tierPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'tier_price' )->getValue();
-                return __( 'Tier price: $' ) . $tierPrice;
+            if ($selectValue = $this->helperData->getGeneralConfig('tier_price')) {
+                $tierPrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('tier_price')->getValue();
+                return __('Tier price: $') . $tierPrice;
             }
         }
         return null;
@@ -134,9 +139,9 @@ class ViewModel implements \Magento\Framework\View\Element\Block\ArgumentInterfa
     {
 
         if ($this->getCurrentProduct()) {
-            if ($this->helperData->getGeneralConfig( 'catalog_rule_price' )) {
-                $rulePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice( 'catalog_rule_price' )->getValue();
-                return __( 'Catalog rule price: $' ) . $rulePrice;
+            if ($this->helperData->getGeneralConfig('catalog_rule_price')) {
+                $rulePrice = $this->getCurrentProduct()->getPriceInfo()->getPrice('catalog_rule_price')->getValue();
+                return __('Catalog rule price: $') . $rulePrice;
             }
         }
         return null;
