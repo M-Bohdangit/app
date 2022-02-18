@@ -23,6 +23,8 @@ class Test
     protected ResourceConnection $_connect;
 
     /**
+     * Constructor
+     *
      * @param LoggerInterface      $logger            LoggerInterface
      * @param WriterInterface      $configWriter      WriterInterface
      * @param ScopeConfigInterface $scopeConfig       ScopeConfigInterface
@@ -48,8 +50,6 @@ class Test
         $this->_connect = $connect;
     }
 
-
-
     /**
      * Enuble rules and changes the values in the
      * rules in the database to the value from the admin panel
@@ -58,13 +58,13 @@ class Test
      */
     public function enableRules()
     {
-        $cron = ($this->helperData->getCronConfig('enable_cron')) ? 0 : 1;
-        $this->helperData->setCronConfig($cron);
+        $enableCron = 1;
+        $this->helperData->setCronConfig($enableCron);
         $connection = $this->_connect->getConnection();
         $tableName = $connection->getTableName("catalogrule");
-        $discount = ['is_active' => $cron,'discount_amount' => $this->helperData->getGeneralConfig('display_social')];
+        $config = ['is_active' => $enableCron, 'discount_amount' => $this->helperData->getGeneralConfig('display_social')];
         $where = ['rule_id = ?' => '5'];
-        $connection->update($tableName, $discount, $where);
+        $connection->update($tableName, $config, $where);
 
         $path = 'socialattribute/cron/enable_cron';
         $value = '1';
@@ -101,16 +101,16 @@ class Test
      */
     public function disableRules()
     {
-        $cron = ($this->helperData->getCronConfig('enable_cron')) ? 0 : 1;
-        $this->helperData->setCronConfig($cron);
+        $enableCron = 0;
+        $this->helperData->setCronConfig($enableCron);
         $connection = $this->_connect->getConnection();
         $tableName = $connection->getTableName("catalogrule");
-        $discount = ['is_active' => $cron];
+        $config = ['is_active' => $enableCron];
         $where = ['rule_id = ?' => '5'];
-        $connection->update($tableName, $discount, $where);
+        $connection->update($tableName, $config, $where);
 
         $path = 'socialattribute/cron/enable_cron';
-        $value = '0';
+        $value = null;
 
         $this->configWriter->save(
             $path,
@@ -121,7 +121,6 @@ class Test
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $rule = $objectManager->get('Magento\CatalogRule\Model\Rule\Job');
         $rule->applyAll();
-
 
         /* get all types of cache in system */
         $allTypes = array_keys($this->_cacheTypeList->getTypes());
@@ -137,6 +136,5 @@ class Test
             $cacheFrontend->getBackend()->clean();
         }
     }
-
 
 }
