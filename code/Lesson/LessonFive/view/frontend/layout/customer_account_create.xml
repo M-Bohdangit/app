@@ -1,16 +1,11 @@
 <?xml version="1.0" ?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <head>
-        <title>Get Categories from specific Product</title>
-    </head>
     <body>
         <referenceContainer name="content">
-            <block
-
-                class="Perspective\CatSpecProd\Block\Index"
-                template="Perspective_CatSpecProd::cat_spec_prod.phtml"
-            />
+            <block class="Magento\Customer\Block\Form\Register"
+                   name="customer_form_register_lesson"
+                   template="Lesson_LessonFive::form/register.phtml"/>
         </referenceContainer>
     </body>
 </page>
