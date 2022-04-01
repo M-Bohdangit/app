@@ -1,0 +1,44 @@
+{
+    "nbg_b2b_offer": {
+        "column": {
+            "b2b_offer_id": true,
+            "b2b_offer_shipping_cost": true,
+            "b2b_offer_created_by_id": true,
+            "b2b_offer_created_by_label": true,
+            "b2b_offer_created_at": true,
+            "b2b_offer_mail_text": true,
+            "b2b_offer_closed_at": true,
+            "b2b_offer_closed_as": true,
+            "b2b_offer_valid_until": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "nbg_b2b_offer_customer": {
+        "column": {
+            "b2b_offer_id": true,
+            "b2b_offer_customer": true,
+            "b2b_offer_customer_received_mail": true,
+            "b2b_offer_customer_received_mail_date": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "nbg_b2b_offer_item": {
+        "column": {
+            "b2b_offer_item_stock_id": true,
+            "b2b_offer_item_offer_id": true,
+            "b2b_offer_item_custom_title": true,
+            "b2b_offer_item_custom_description": true,
+            "b2b_offer_item_custom_price": true,
+            "b2b_offer_item_custom_shipping_cost": true,
+            "b2b_offer_item_reserved_until": true,
+            "b2b_offer_item_show_link_to_shop": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

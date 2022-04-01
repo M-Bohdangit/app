@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magecom
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@magecom.net so we can send you a copy immediately.
+ *
+ * @category  Magecom
+ * @package   Magecom_Module
+ * @copyright Copyright (c) ${YEAR} Magecom, Inc. (http://www.magecom.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+$collection = $block->getItemsCollection();
+?>
+<h2>Hello Items/Index page</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Created Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+<?php
+foreach ($collection->getItems() as $item)
+{
+?>
+    <tr>
+        <td><?php echo $item->getId();?></td>
+        <td><?php echo $item->getTitle();?></td>
+        <td><?php echo $item->getCreationTime();?></td>
+    </tr>
+<?php
+}
+?>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="2">Total:</td>
+        <td><?php echo $collection->getTotalCount();?></td>
+    </tr>
+    </tfoot>
+</table>
+
+<p>
+    <a href="<?php echo $block->getLearningIndexIndexUrl(); ?>">Index/Index link</a>
+</p>
+<p>
+    <a href="<?php echo $block->getLearningIndexFrontUrl(); ?>">Index/Front link</a>
+</p>
+<p>
+    <a href="<?php echo $block->getLearningFrontIndexUrl(); ?>">Front/Index link</a>
+</p>
+<p>
+    <a href="<?php echo $block->getLearningFrontFrontUrl(); ?>">Front/Front link</a>
+</p>

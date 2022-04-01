@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="NBG\B2B\Api\B2BRepositoryInterface" type="NBG\B2B\Model\B2BRepository"/>
+    <preference for="NBG\B2B\Api\Data\B2BInterface" type="NBG\B2B\Model\Data\B2B"/>
+    <preference for="NBG\B2B\Api\Data\B2BSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="NBG\B2B\Model\ResourceModel\B2B\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">nbg_b2b_offer</argument>
+            <argument name="resourceModel" xsi:type="string">NBG\B2B\Model\ResourceModel\B2B\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="nbg_b2b_offer_customer" xsi:type="string">
+                    NBG\B2B\Model\ResourceModel\B2B\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

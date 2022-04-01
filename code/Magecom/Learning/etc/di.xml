@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magecom
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@magecom.net so we can send you a copy immediately.
+ *
+ * @category  Magecom
+ * @package   Magecom_Module
+ * @copyright Copyright (c) 2018 Magecom, Inc. (http://www.magecom.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magecom\Learning\Api\Data\ItemsSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magecom_learning_items_listing_data_source" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items\Grid\Collection</item>
+                <!-- item name="magecom_learning_items_form_data_source" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items\Form\Collection</item -->
+            </argument>
+        </arguments>
+    </type>
+    <!--virtualType name="Magecom\Learning\Model\ResourceModel\Items\Form\Collection" type="Magento\Ui\DataProvider\AbstractDataProvider">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">items</argument>
+            <argument name="resourceModel" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items</argument>
+        </arguments>
+    </virtualType -->
+    <preference for="Magento\Catalog\Model\Product" type="Magecom\Learning\Model\Product" />
+    <virtualType name="Magecom\Learning\Model\ResourceModel\Items\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">items</argument>
+            <argument name="resourceModel" xsi:type="string">Magecom\Learning\Model\ResourceModel\Items</argument>
+        </arguments>
+    </virtualType>
+</config>

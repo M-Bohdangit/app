@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="NBG_B2B::all"
+            title="NBG"
+            module="NBG_B2B"
+            sortOrder="51"
+            resource="NBG_B2B::all"/>
+        <add
+            id="NBG_B2B::all"
+            title="index index"
+            module="NBG_B2B"
+            sortOrder="9999"
+            resource="NBG_B2B::index_index"
+            parent="NBG_B2B::all_data"
+            action="index/index/index"/>
+        <add
+            id="NBG_B2B::nbg_b2b_offer_customer"
+            title="Offer customer"
+            module="NBG_B2B"
+            sortOrder="9999"
+            resource="Magento_Backend::content"
+            parent="NBG_B2B::B2B"
+            action="nbg_b2b/b2b/index"/>
+    </menu>
+</config>
+
+
+    <?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<menu>
+    <add id="Dev_Grid::home" title="Category Listing" module="Dev_Grid" sortOrder="1000"
+         parent="Magento_Catalog::catalog_categories" resource="Magento_Catalog::categories"
+         action="dev_grid/index/index"/>
+</menu>
+</config>

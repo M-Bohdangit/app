@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <table name="nbg_b2b_offer" resource="default" engine="innodb" charset="utf8"
+           comment="nbg_b2b_offer Table">
+        <column xsi:type="int" name="b2b_offer_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="b2b_offer_id"/>
+        <column xsi:type="int" name="b2b_offer_shipping_cost" padding="11" unsigned="false" nullable="false"
+                identity="false"
+                comment="b2b_offer_shipping_cost"/>
+        <column xsi:type="int" name="b2b_offer_created_by_id" padding="11" unsigned="false" nullable="false"
+                identity="false"
+                comment="b2b_offer_shipping_cost"/>
+        <column xsi:type="varchar" name="b2b_offer_created_by_label" length="55"
+                nullable="false" default="0" comment="b2b_offer_created_by_label"/>
+        <column xsi:type="timestamp" name="b2b_offer_created_at" default="CURRENT_TIMESTAMP" on_update="true"
+                nullable="false" comment="b2b_offer_created_at"/>
+        <column xsi:type="varchar" name="b2b_offer_mail_text" length="1024"
+                nullable="false"
+                default="0" comment="b2b_offer_mail_text"/>
+        <column xsi:type="timestamp" name="b2b_offer_closed_at"
+                nullable="true" default='CURRENT_TIMESTAMP'
+                comment="b2b_offer_closed_at"/>
+        <column xsi:type="varchar" name="b2b_offer_closed_as" length="55"
+                nullable="false" default="0" comment="b2b_offer_closed_as"/>
+        <column xsi:type="datetime" name="b2b_offer_valid_until" nullable="true"
+                comment="b2b_offer_valid_until"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="b2b_offer_id"/>
+        </constraint>
+    </table>
+    <table name="nbg_b2b_offer_customer" resource="default" engine="innodb"
+           comment="nbg_b2b_offer_customer Table">
+        <column xsi:type="int" name="b2b_offer_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="b2b_offer_id"/>
+        <column xsi:type="int" name="b2b_offer_customer" padding="11" nullable="false" identity="false"
+                comment="b2b_offer_customer"/>
+        <column xsi:type="varchar" name="b2b_offer_customer_received_mail" length="5" nullable="false"
+               comment="b2b_offer_customer_received_mail"/>
+        <column xsi:type="timestamp" name="b2b_offer_customer_received_mail_date"
+               nullable="true" default="0"
+                comment="b2b_offer_customer_received_mail_date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="b2b_offer_id"/>
+        </constraint>
+    </table>
+    <table name="nbg_b2b_offer_item" resource="default" engine="innodb" charset="utf8"
+           comment="nbg_b2b_offer_item Table">
+        <column xsi:type="int" name="b2b_offer_item_stock_id" padding="11" nullable="false"
+                identity="true" comment="b2b_offer_item_stock_id"/>
+        <column xsi:type="int" name="b2b_offer_item_offer_id" padding="11" nullable="false"
+                identity="false" comment="b2b_offer_item_offer_id"/>
+        <column xsi:type="varchar" name="b2b_offer_item_custom_title" length="55"
+                nullable="false"
+                comment="b2b_offer_item_custom_title"/>
+        <column xsi:type="varchar" name="b2b_offer_item_custom_description" length="255"
+                 nullable="false" default="0"
+                comment="b2b_offer_item_custom_description"/>
+        <column xsi:type="int" name="b2b_offer_item_custom_price" padding="11"  nullable="false"
+                default="0" comment="b2b_offer_item_custom_price"/>
+        <column xsi:type="int" name="b2b_offer_item_custom_shipping_cost" padding="11" unsigned="true" nullable="false"
+             default="0" comment="b2b_offer_item_custom_shipping_cost"/>
+        <column xsi:type="timestamp" name="b2b_offer_item_reserved_until" nullable="true"
+                default="0" comment="b2b_offer_item_reserved_until"/>
+        <column xsi:type="int" name="b2b_offer_item_show_link_to_shop" padding="11" unsigned="true" nullable="false"
+                comment="b2b_offer_item_show_link_to_shop"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="b2b_offer_item_stock_id"/>
+        </constraint>
+    </table>
+</schema>

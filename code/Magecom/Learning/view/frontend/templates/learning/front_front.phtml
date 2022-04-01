@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magecom
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@magecom.net so we can send you a copy immediately.
+ *
+ * @category  Magecom
+ * @package   Magecom_Module
+ * @copyright Copyright (c) ${YEAR} Magecom, Inc. (http://www.magecom.net)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+<h2>Hello Front/Front page</h2>
+
+<p>
+    <a href="<?php echo $block->getLearningIndexIndexUrl(); ?>">Index/Index link</a>
+</p>
+<p>
+    <a href="<?php echo $block->getLearningIndexFrontUrl(); ?>">Index/Front link</a>
+</p>
+<p>
+    <a href="<?php echo $block->getLearningFrontIndexUrl(); ?>">Front/Index link</a>
+</p>
+
+<script type="text/x-magento-init">
+    {
+        "#target": {
+            "coffee": {
+                "base_url": "<?= $block->escapeJs($block->getBaseUrl()) ?>"
+            }
+        }
+    }
+</script>
+<div id="target"></div>
+<form data-mage-init='{"validation": {}}'>
+    <div class="control">
+        <input type="text" name="email" class="input-text" placeholder="<?= __("Your Email")?>" data-validate="{required: true, 'validate-email': true}" />
+    </div>
+    <button type="submit" class="action primary"><?= __('Submit');?></button>
+</form>
+
+
+<div id="my-collapsible" data-mage-init='{"Magecom_Learning/js/collapsible-mixin": {"animate": true, "ajaxContent": true}}'>
+    <div data-role="title">
+        <h2>How about collapsible widget <button data-role="trigger">go</button> </h2>
+    </div>
+    <div id="example" data-role="content"></div>
+    <a href="<?= $block->getViewFileUrl('Magecom_Learning/example-content.html')?>" data-ajax="true"></a>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "startSimple": {
+                        "component": "Magecom_Learning/js/plain-view-model",
+                        "base_url": "<?php echo $block->escapeJs($block->getBaseUrl())?>"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<div data-bind="scope: 'startSimple'">
+    <h2 data-bind="text: title"></h2>
+    <pre data-bind="text: JSON.stringify(config, null, 2)"></pre>
+    <pre data-bind="text: output"></pre>
+    <table data-bind="foreach: exchange_rates">
+        <tr>
+            <td data-bind="text: currency_to"></td>
+            <td data-bind="text: rate"></td>
+        </tr>
+    </table>
+    <ol data-bind="foreach: values">
+        <li data-bind="text: $data"></li>
+    </ol>
+
+    <table>
+        <tr>
+            <th data-bind="i18n: 'Currency to'"></th>
+            <th data-bind="i18n: 'Rate'"></th>
+        </tr>
+        <!-- ko foreach: exchange_rates -->
+        <tr>
+            <td data-bind="text: currency_to"></td>
+            <td data-bind="text: rate"></td>
+        </tr>
+        <!-- /ko -->
+    </table>
+
+</div>
+
+<?php echo $block->getEncrypted() ;?>
+<pre>
+<?php
+$block->getProducts();
+?>
+</pre>
