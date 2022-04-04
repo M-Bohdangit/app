@@ -370,6 +370,7 @@ return [
         'Learning_Foo' => 0,
         'Learning_SocialAttribute' => 0,
         'Lesson_LessonFive' => 1,
+        'Mageap_Teston' => 1,
         'Magecom_Learning' => 1,
         'Mageplaza_HelloWorld' => 1,
         'NBG_B2B' => 1,

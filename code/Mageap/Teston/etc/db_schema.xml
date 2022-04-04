@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mageap_teston_post" resource="default" engine="innodb" comment="mageap_teston_post Table">
+        <column xsi:type="smallint" name="post_id" padding="6" unsigned="true" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+        </constraint>
+        <column name="post_iad" nullable="true" xsi:type="text"/>
+    </table>
+</schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageap::top_level" title="Mageap" module="Mageap_Teston" sortOrder="9999"
+             resource="Magento_Backend::content"/>
+        <add id="Mageap_Teston::mageap_teston_post" title="Post" module="Mageap_Teston" sortOrder="9999"
+             resource="Magento_Backend::content" parent="Mageap::top_level" action="mageap_teston/post/index"/>
+    </menu>
+</config>
