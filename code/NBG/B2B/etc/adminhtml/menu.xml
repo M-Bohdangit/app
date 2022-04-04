@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="NBG_B2B::B2B"
+            title="NBG"
+            module="NBG_B2B"
+            sortOrder="51"
+            resource="NBG_B2B::B2B"/>
+        <add
+            id="NBG_B2B::index_index"
+            title="Test 1"
+            module="NBG_B2B"
+            sortOrder="9999"
+            resource="Magento_Backend::content"
+            parent="NBG_B2B::B2B"
+            action="NBG_uicomponent/B2B/index/"/>
+        <add
+            id="NBG_B2B::nbg_b2b_offer_item"
+            title="Offer customer"
+            module="NBG_B2B"
+            sortOrder="9999"
+            resource="Magento_Backend::content"
+            parent="NBG_B2B::B2B"
+            action="B2B/nbg_b2b_offer_item"/>
+    </menu>
+</config>
