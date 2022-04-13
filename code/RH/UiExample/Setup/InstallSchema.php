@@ -31,11 +31,11 @@ class InstallSchema implements InstallSchemaInterface
 
         $installer->startSetup();
         /**
-         * Create table 'rh_blog'
+         * Create table 'nbg_b2b'
          */
-        if (!$installer->tableExists('rh_blog')) {
+        if (!$installer->tableExists('nbg_b2b')) {
             $table = $installer->getConnection()->newTable(
-                $installer->getTable('rh_blog')
+                $installer->getTable('nbg_b2b')
             )->addColumn(
                 'blog_id',
                 Table::TYPE_INTEGER,

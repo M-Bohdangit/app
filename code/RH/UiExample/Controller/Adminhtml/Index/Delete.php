@@ -27,7 +27,7 @@ class Delete extends Action
         \RH\UiExample\Model\Blog $blogFactory
     ) {
         parent::__construct($context);
-        $this->modelBlog = $model;
+        $this->modelBlog = $blogFactory;
     }
 
     /**

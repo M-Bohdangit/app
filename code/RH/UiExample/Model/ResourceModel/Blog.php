@@ -18,6 +18,6 @@ class Blog extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('rh_blog', 'blog_id');
+        $this->_init('nbg_b2b', 'blog_id');
     }
 }

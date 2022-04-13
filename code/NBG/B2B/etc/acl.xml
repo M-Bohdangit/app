@@ -3,14 +3,23 @@
 	<acl>
 		<resources>
 			<resource id="Magento_Backend::admin">
-				<resource id="NBG_B2B::index" title="index" sortOrder="10">
-					<resource id="NBG_B2B::index_index" title="index index" sortOrder="10"/>
+				<resource id="NBG_B2B::nbg_b2b_offer" title="nbg_b2b_offer" sortOrder="10">
+					<resource id="NBG_B2B::nbg_b2b_offer_save" title="Save nbg_b2b_offer" sortOrder="10"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_delete" title="Delete nbg_b2b_offer" sortOrder="20"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_update" title="Update nbg_b2b_offer" sortOrder="30"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_view" title="View nbg_b2b_offer" sortOrder="40"/>
 				</resource>
-				<resource id="NBG_B2B::B2B" title="B2B" sortOrder="10">
-					<resource id="NBG_B2B::B2B_save" title="Save B2B" sortOrder="10"/>
-					<resource id="NBG_B2B::B2B_delete" title="Delete B2B" sortOrder="20"/>
-					<resource id="NBG_B2B::B2B_update" title="Update B2B" sortOrder="30"/>
-					<resource id="NBG_B2B::B2B_view" title="View B2B" sortOrder="40"/>
+				<resource id="NBG_B2B::nbg_b2b_offer_customer" title="nbg_b2b_offer_customer" sortOrder="10">
+					<resource id="NBG_B2B::nbg_b2b_offer_customer_save" title="Save nbg_b2b_offer_customer" sortOrder="10"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_customer_delete" title="Delete nbg_b2b_offer_customer" sortOrder="20"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_customer_update" title="Update nbg_b2b_offer_customer" sortOrder="30"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_customer_view" title="View nbg_b2b_offer_customer" sortOrder="40"/>
+				</resource>
+				<resource id="NBG_B2B::nbg_b2b_offer_item" title="nbg_b2b_offer_item" sortOrder="10">
+					<resource id="NBG_B2B::nbg_b2b_offer_item_save" title="Save nbg_b2b_offer_item" sortOrder="10"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_item_delete" title="Delete nbg_b2b_offer_item" sortOrder="20"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_item_update" title="Update nbg_b2b_offer_item" sortOrder="30"/>
+					<resource id="NBG_B2B::nbg_b2b_offer_item_view" title="View nbg_b2b_offer_item" sortOrder="40"/>
 				</resource>
 			</resource>
 		</resources>

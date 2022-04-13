@@ -1,23 +1,39 @@
 <?xml version="1.0" ?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="NBG\B2B\Api\B2BRepositoryInterface" type="NBG\B2B\Model\B2BRepository"/>
-    <preference for="NBG\B2B\Api\Data\B2BInterface" type="NBG\B2B\Model\Data\B2B"/>
-    <preference for="NBG\B2B\Api\Data\B2BSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    <virtualType name="NBG\B2B\Model\ResourceModel\B2B\Grid\Collection"
-                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-        <arguments>
-            <argument name="mainTable" xsi:type="string">nbg_b2b_entity</argument>
-            <argument name="resourceModel" xsi:type="string">NBG\B2B\Model\ResourceModel\B2B\Collection</argument>
-        </arguments>
-    </virtualType>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-        <arguments>
-            <argument name="collections" xsi:type="array">
-                <item name="nbg_b2b_entity_listing_data_source" xsi:type="string">
-                    NBG\B2B\Model\ResourceModel\B2B\Grid\Collection
-                </item>
-            </argument>
-        </arguments>
-    </type>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="NBG\B2B\Api\NbgB2bOfferRepositoryInterface" type="NBG\B2B\Model\NbgB2bOfferRepository"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferInterface" type="NBG\B2B\Model\NbgB2bOffer"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="NBG\B2B\Model\ResourceModel\NbgB2bOffer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">nbg_b2b_nbg_b2b_offer</argument>
+			<argument name="resourceModel" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOffer\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="nbg_b2b_nbg_b2b_offer_listing_data_source" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOffer\Grid\Collection</item>
+				<item name="nbg_b2b_nbg_b2b_offer_customer_listing_data_source" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOfferCustomer\Grid\Collection</item>
+				<item name="nbg_b2b_nbg_b2b_offer_item_listing_data_source" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOfferItem\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="NBG\B2B\Api\NbgB2bOfferCustomerRepositoryInterface" type="NBG\B2B\Model\NbgB2bOfferCustomerRepository"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferCustomerInterface" type="NBG\B2B\Model\NbgB2bOfferCustomer"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferCustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="NBG\B2B\Model\ResourceModel\NbgB2bOfferCustomer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">nbg_b2b_nbg_b2b_offer_customer</argument>
+			<argument name="resourceModel" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOfferCustomer\Collection</argument>
+		</arguments>
+	</virtualType>
+	<preference for="NBG\B2B\Api\NbgB2bOfferItemRepositoryInterface" type="NBG\B2B\Model\NbgB2bOfferItemRepository"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferItemInterface" type="NBG\B2B\Model\NbgB2bOfferItem"/>
+	<preference for="NBG\B2B\Api\Data\NbgB2bOfferItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="NBG\B2B\Model\ResourceModel\NbgB2bOfferItem\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">nbg_b2b_nbg_b2b_offer_item</argument>
+			<argument name="resourceModel" xsi:type="string">NBG\B2B\Model\ResourceModel\NbgB2bOfferItem\Collection</argument>
+		</arguments>
+	</virtualType>
 </config>

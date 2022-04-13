@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>nbg_b2b_nbg_b2b_offer_item_columns</spinner>
+		<deps>
+			<dep>nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new nbg_b2b_offer_item</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="nbg_b2b_nbg_b2b_offer_item_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">nbg_b2b_offer_item_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>NBG_B2B::nbg_b2b_offer_item</aclResource>
+		<dataProvider name="nbg_b2b_nbg_b2b_offer_item_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>nbg_b2b_offer_item_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="nbg_b2b_nbg_b2b_offer_item_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">nbg_b2b_offer_item_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="nbg_b2b/nbgb2bofferitem/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_listing.nbg_b2b_nbg_b2b_offer_item_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>nbg_b2b_offer_item_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="nbg_b2b_offer_item_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_stock_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_stock_id</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="NBG\B2B\Ui\Component\Listing\Column\Nbgb2bofferitemActions">
+			<settings>
+				<indexField>nbg_b2b_offer_item_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+		<column name="b2b_offer_item_offer_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_offer_id</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_custom_title">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_custom_title</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_custom_description">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_custom_description</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_custom_price">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_custom_price</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_custom_shipping_cost">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_custom_shipping_cost</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_reserved_until">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_reserved_until</label>
+				<editor>
+					<editorType>date</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="b2b_offer_item_show_link_to_shop">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">b2b_offer_item_show_link_to_shop</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+	</columns>
+</listing>

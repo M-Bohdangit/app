@@ -397,7 +397,7 @@ return [
         'Perspective_TestQty' => 1,
         'Perspective_TutorialEntity' => 1,
         'Perspective_TutorialProductPage' => 0,
-        'RH_UiExample' => 0,
+        'RH_UiExample' => 1,
         'Temando_ShippingRemover' => 1,
         'TestTasks_DiscountSocialProducts' => 1,
         'TestTasks_Price' => 0,
